@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>茶店云麓康养小镇</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        margin: 0;
+        padding: 0;
+      }
+      header {
+        position: relative;
+        background: url("images/云麓康养小镇.jpg") no-repeat center center;
+        background-size: cover;
+        color: #fff;
+        padding: 4rem 0;
+        text-align: center;
+      }
+      header::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5); /* 50% black overlay */
+        z-index: 1;
+      }
+      header h1 {
+        position: relative;
+        z-index: 2;
+        font-size: 3rem;
+        color: #fff;
+      }
+      header img {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 2;
+        max-width: 150px;
+        height: auto;
+        filter: brightness(3); /* 增加亮度 */
+      }
+      nav {
+        display: flex;
+        justify-content: center;
+        background: #556b2f;
+        padding: 1rem 0;
+      }
+      nav a {
+        color: #fff;
+        padding: 1rem 2rem;
+        text-decoration: none;
+        font-size: 1rem;
+      }
+      nav a:hover {
+        background: #6b8e23;
+      }
+      .container {
+        padding: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      h1,
+      h2 {
+        color: #6b8e23;
+      }
+      .content {
+        margin-bottom: 2rem;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        padding: 1rem 0; /* 添加内边距 */
+      }
+      .intro-section,
+      .transport-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+      }
+      .intro-text,
+      .transport-text {
+        flex: 1;
+        margin-right: 1rem;
+      }
+      .titles {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 10px;
+        padding: 20px 0;
+        font-size: 0.9em;
+        color: #666;
+      }
+      .title-item {
+        padding: 10px;
+        border-radius: 5px;
+        margin: 5px;
+        background-color: #3383b8; /* 绿色背景色 */
+        text-align: center;
+        flex: 1 1 calc(33.333% - 10px);
+        box-sizing: border-box;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 轻微阴影效果 */
+        color: #fff;
+      }
+      .certificate-image {
+        max-width: 30%;
+        height: auto;
+        margin-top: 1rem;
+        align-self: flex-start;
+      }
+      .map-image {
+        max-width: 80%; /* 调整为您需要的比例，例如 20% */
+        height: auto;
+        margin-top: 1rem;
+        align-self: flex-start;
+        margin-left: 1rem; /* 添加左边距 */
+      }
+
+      .environment-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        margin-top: 2rem;
+      }
+
+      .environment-tex {
+        flex: 1;
+        margin-right: 1rem;
+      }
+
+      .environment-image {
+        max-width: 70%; /* 将最大宽度调整为您需要的比例，例如 10% */
+        height: auto;
+        margin-top: 1rem;
+        align-self: flex-start;
+        margin-left: 1rem; /* 添加左边距 */
+      }
+      .scenic-section {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 2rem;
+      }
+
+      .scenic-text {
+        flex: 1;
+        margin-bottom: 1rem;
+      }
+
+      .scenic-image {
+        max-width: 50%; /* 调整为您需要的比例 */
+        height: auto;
+        margin-top: 1rem;
+        align-self: flex-start;
+        margin-left: 1rem; /* 添加左边距 */
+      }
+
+      .scenic-text p {
+        margin: 0.5rem 0;
+      }
+
+      .scenic-text h3 {
+        font-size: 1.5rem; /* 调整字体大小 */
+        color: #6b8e23; /* 调整字体颜色 */
+        font-weight: bold; /* 使字体加粗 */
+        margin: 1rem 0 0.5rem 0; /* 添加上、下边距 */
+      }
+
+      .contact-section {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 2rem; /* 添加上间距 */
+      }
+
+      .contact-section h2 {
+        margin-bottom: 1rem; /* 添加标题和内容之间的间距 */
+      }
+
+      .contact-section p {
+        margin: 0.5rem 0; /* 调整段落间距 */
+      }
+
+      .contact-section img {
+        max-width: 30%;
+        height: auto;
+        margin: 1rem 0; /* 调整图像的上下间距 */
+      }
+
+      footer {
+        text-align: center;
+        padding: 1rem 0;
+        background: #556b2f;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>茶店云麓康养小镇</h1>
+      <img src="images/云麓logo2 copy.png" alt="云麓康养小镇 Logo" />
+    </header>
+    <nav>
+      <a href="#intro">介绍</a>
+      <a href="#transport">交通</a>
+      <a href="#environment">康养环境</a>
+      <a href="#scenic">景区介绍</a>
+      <a href="#contact">联系我们</a>
+    </nav>
+    <div class="container">
+      <div id="intro" class="content">
+        <div>
+          <h2>介绍</h2>
+          <div class="intro-section">
+            <div class="intro-text">
+              <p>
+                “茶店云麓康养小镇”是湖北巴东乡村振兴的重要项目之一。位于湖北巴东县茶店子，这里是中华始祖神农氏发现茶叶的地方。茶店子因其独特的地理环境和气候条件，出产的优质茶叶被誉为贡茶。茶店子是茶马古道的重要节点，孕育了土家巴人的烟火传奇。春秋分明、温凉有度，是“云麓小镇”项目的理想之地。加之富硒高氧的自然恩赐、农耕传袭的深厚底蕴，让茶店子成为了百岁康宁的象征。
+              </p>
+              <p>
+                茶店子位于长江以南，巴东县城南部，东临归平河与秭归县隔河相望，西接龙头河与重庆市巫山县交界，南与绿葱坡毗邻，北与信陵接壤。毗邻国家4A级景区巴人河，属于巴东县域旅游重镇。
+              </p>
+              <div class="titles">
+                <div class="title-item">中国天然氧吧</div>
+                <div class="title-item">中国三大硒都</div>
+                <div class="title-item">茶叶重要生产基地</div>
+                <div class="title-item">长寿之乡</div>
+                <div class="title-item">中国最美乡村</div>
+                <div class="title-item">美丽乡村示范村</div>
+                <div class="title-item">最适合人类居住的海拔高度</div>
+              </div>
+            </div>
+            <img
+              src="images/证书 copy.png"
+              alt="证书"
+              class="certificate-image"
+            />
+          </div>
+        </div>
+      </div>
+      <div id="transport" class="content">
+        <h2>交通</h2>
+        <div class="transport-section">
+          <div class="transport-text">
+            <p>
+              沪蓉沪渝巴张及翻坝高速、巴野公路、野三关动车站、巴东北高铁站、长江航道巴东港、三峡机场、恩施机场
+              构建起茶店子发达的交通网络，使得茶店云麓康养小镇与外界的连接十分便捷，开车5分钟直达茶店子镇中心商业街区，巴张高速贯通后去巴东县城仅需5分钟，基本公共服务可共享。
+            </p>
+          </div>
+          <img src="images/交通图 copy.png" alt="交通地图" class="map-image" />
+        </div>
+      </div>
+      <div id="environment" class="content">
+        <h2>康养环境</h2>
+        <div class="environment-section">
+          <div class="environment-text">
+            <h3>优质配套</h3>
+            <p>
+              ◎
+              独创“3代+4季”高端康养森活体系——为不同年龄层的业主提供全年无休的康养体验，实现全龄共享、四季同乐。
+            </p>
+            <img
+              src="images/高端康养森活体系.png"
+              alt="高端康养森活体系"
+              class="environment-image"
+            />
+            <p>
+              ◎
+              业主独享度假资源——茶店云麓康养小镇配备度假酒店式物业管理，业主全享民生地产集团旗下康养、避暑、温泉度假资源。
+            </p>
+            <p>
+              ◎
+              业主独享星级医疗——拥有北京市人民政府援建的二甲医院茶店子人民医院及健康中心形成全面的医疗配套。
+            </p>
+            <img
+              src="images/星级医疗.png"
+              alt="星级医疗"
+              class="environment-image"
+            />
+
+            <h3>业主独享八大中心</h3>
+            <p>
+              ◎
+              健康管理中心——气候养身，依托区域优良、舒适的乡村小气候特征，针对大都市的雾霾天气和城市热岛效应，打造健康管理中心，开发森林避暑、阳光避霾等康养度假产品，融入健康体验、康复疗养等功能。
+            </p>
+            <img
+              src="images/健康管理中心.png"
+              alt="健康管理中心"
+              class="environment-image"
+            />
+            <p>
+              ◎
+              森林静养中心——山野养心，闲看峰花雪月，静观高山流水，愉悦身心。利用区域大面积的森林资源，建设森林静养中心，开发森林SPA、森林瑜伽、森林太极、森林茗茶、森林冥想等生态疗养康体业态。
+            </p>
+            <img
+              src="images/森林静养中心.png"
+              alt="森林静养中心"
+              class="environment-image"
+            />
+            <p>
+              ◎
+              休闲运动中心——运动养体，利用区域的雪景、山地、森林资源，打造休闲运动中心，开发滑雪、滑草、徒步、慢跑、骑行、溯溪、攀岩等户外运动康体项目。另外建设一个综合性运动场地，包含篮球、羽毛球、乒乓球、门球等。
+            </p>
+            <img
+              src="images/休闲运动中心.png"
+              alt="休闲运动中心"
+              class="environment-image"
+            />
+            <p>
+              ◎
+              旅游度假中心——原野养眼，整合驿站风情街、巴人河景区、十八湾，突出旅游区山峰、河流、森林、溪谷、幽潭、峡谷、湿地生态景观，结合青云逸栈，打造旅游度假中心，开发户外写生、摄影、练声、生态观光等休闲业态。
+            </p>
+            <img
+              src="images/旅游度假中心.png"
+              alt="旅游度假中心"
+              class="environment-image"
+            />
+            <p>
+              ◎
+              田园养生中心——田野养生，采菊东篱下，世外桃源地。依托高山盆地自然地貌，打造具备“桃花源”神韵的田园养生中心。开发生态农业观光、生态采摘、自耕农场、野炊基地、田园民宿、农耕文化实景博物馆等农村生活业态，勤筋骨、识五谷、感乡愁。
+            </p>
+            <img
+              src="images/田园养生中心.png"
+              alt="田园养生中心"
+              class="environment-image"
+            />
+            <p>
+              ◎
+              生态美食中心——物产养胃，利用当地丰富的硒物产资源，打造生态美食中心，开发特色旅游产品，土特产、特色美食、生态配送等系列。
+            </p>
+            <img
+              src="images/生态美食中心.png"
+              alt="生态美食中心"
+              class="environment-image"
+            />
+            <p>
+              ◎
+              文化娱乐中心——文化养神，挖掘茶盐古道文化、土家族文化、背夫文化资源，打造文化娱乐中心，开发系列文化体验及娱乐活动。
+            </p>
+            <img
+              src="images/文化娱乐中心.png"
+              alt="文化娱乐中心"
+              class="environment-image"
+            />
+            <p>
+              ◎
+              研学教育中心——研学养智，利用区域丰富的原生态动植物资源，硒矿资源和民俗文化资源，打造研学教育中心，大力发展生态科普教育、拓展训练、亲子游乐、文化探秘等青少年研学旅游活动产品。
+            </p>
+            <img
+              src="images/研学教育中心.png"
+              alt="研学教育中心"
+              class="environment-image"
+            />
+
+            <h3>项目总规模</h3>
+            <img
+              src="images/项目总规模.png"
+              alt="项目总规模"
+              class="environment-image"
+            />
+
+            <h3>山中健康优质资产</h3>
+            <p>
+              户户谷上云端入帘，领略人生豁达境界。
+              独栋精装楼宇，电梯洋房一梯两户。 阔绰二房三房设计，山中做房东。
+              全龄全季全业态自带客流，四季皆向往。
+              酒店托管系统，业主房源也是酒店房源。
+              每年十万级度假流量，闲置季房源做民宿。
+              投资健康成为趋势，茶店云麓小镇产业大有可为。
+              品牌实力后盾，为资产护航。 硒养大时代，品质为王，早买早享受。
+            </p>
+
+            <h3>热销户型</h3>
+            <img src="images/户型.png" alt="户型图" class="environment-image" />
+          </div>
+        </div>
+      </div>
+
+      <div id="scenic" class="content">
+        <h2>景区介绍</h2>
+        <div class="scenic-section">
+          <div class="scenic-text">
+            <h3>巴人河：</h3>
+            <p>国家4A景区，被誉为“巴山秘境”，</p>
+            <p>长江三峡的“香格里拉”。</p>
+            <img src="images/巴人河.jpg" alt="巴人河" class="scenic-image" />
+            <h3>巫峡口：</h3>
+            <p>长江三峡闻名于世界，</p>
+            <p>1980版印在人民币上的风光。</p>
+            <img src="images/巫峡口.jpg" alt="巫峡口" class="scenic-image" />
+            <h3>神农溪：</h3>
+            <p>国家5A景区，世界纤夫活化石。</p>
+            <img src="images/神农溪.webp" alt="神农溪" class="scenic-image" />
+            <h3>美丽十八弯：</h3>
+            <p>山歌《山路十八弯》诞生地。</p>
+            <img
+              src="images/美丽十八弯.png"
+              alt="美丽十八弯"
+              class="scenic-image"
+            />
+            <h3>绿葱坡滑雪场：</h3>
+            <p>华中地区最大、功能设施</p>
+            <p>最全的滑雪场。</p>
+            <img
+              src="images/绿葱坡滑雪场.png"
+              alt="绿葱坡滑雪场"
+              class="scenic-image"
+            />
+            <h3>森林花海：</h3>
+            <p>原始高山林海花海风貌</p>
+            <p>和喀斯特地貌</p>
+            <p>一小时车程均可 到达。</p>
+            <img
+              src="images/森林花海.png"
+              alt="森林花海"
+              class="scenic-image"
+            />
+          </div>
+        </div>
+      </div>
+      <div id="contact" class="content contact-section">
+        <h2>联系我们</h2>
+        <p>联系电话：0718-4335666</p>
+        <p>微信公众号：茶店云麓康养小镇</p>
+        <img src="images/二维码.jpg" alt="微信公众号二维码" />
+        <p>导航地址：湖北省恩施州巴东县茶店子镇茶店云麓康养小镇</p>
+      </div>
+    </div>
+    <footer>
+      <p>&copy; 2024 茶店云麓康养小镇 版权所有</p>
+    </footer>
+  </body>
+</html>
