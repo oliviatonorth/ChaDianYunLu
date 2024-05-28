@@ -47,6 +47,7 @@
       }
       nav {
         display: flex;
+        flex-wrap: wrap;
         justify-content: center;
         background: #556b2f;
         padding: 1rem 0;
@@ -107,21 +108,32 @@
         box-sizing: border-box;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 轻微阴影效果 */
         color: #fff;
+        position: relative; /* 使其子元素的定位相对于这个元素 */
+        cursor: pointer;
+      }
+      .popup {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 10px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        z-index: 10;
+        color: #333; /* 确保文本颜色 */
       }
       .certificate-image {
-        max-width: 30%;
+        max-width: 100%;
         height: auto;
         margin-top: 1rem;
-        align-self: flex-start;
       }
       .map-image {
-        max-width: 80%; /* 调整为您需要的比例，例如 20% */
+        max-width: 100%;
         height: auto;
         margin-top: 1rem;
-        align-self: flex-start;
-        margin-left: 1rem; /* 添加左边距 */
       }
-
       .environment-section {
         display: flex;
         justify-content: space-between;
@@ -129,18 +141,14 @@
         flex-wrap: wrap;
         margin-top: 2rem;
       }
-
-      .environment-tex {
+      .environment-text {
         flex: 1;
         margin-right: 1rem;
       }
-
       .environment-image {
-        max-width: 70%; /* 将最大宽度调整为您需要的比例，例如 10% */
+        max-width: 100%;
         height: auto;
         margin-top: 1rem;
-        align-self: flex-start;
-        margin-left: 1rem; /* 添加左边距 */
       }
       .scenic-section {
         display: flex;
@@ -148,57 +156,68 @@
         align-items: flex-start;
         margin-top: 2rem;
       }
-
       .scenic-text {
         flex: 1;
         margin-bottom: 1rem;
       }
-
       .scenic-image {
-        max-width: 50%; /* 调整为您需要的比例 */
+        max-width: 100%;
         height: auto;
         margin-top: 1rem;
-        align-self: flex-start;
-        margin-left: 1rem; /* 添加左边距 */
       }
-
       .scenic-text p {
         margin: 0.5rem 0;
       }
-
       .scenic-text h3 {
         font-size: 1.5rem; /* 调整字体大小 */
         color: #6b8e23; /* 调整字体颜色 */
         font-weight: bold; /* 使字体加粗 */
         margin: 1rem 0 0.5rem 0; /* 添加上、下边距 */
       }
-
       .contact-section {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         margin-top: 2rem; /* 添加上间距 */
       }
-
       .contact-section h2 {
         margin-bottom: 1rem; /* 添加标题和内容之间的间距 */
       }
-
       .contact-section p {
         margin: 0.5rem 0; /* 调整段落间距 */
       }
-
       .contact-section img {
-        max-width: 30%;
+        max-width: 100%;
         height: auto;
         margin: 1rem 0; /* 调整图像的上下间距 */
       }
-
       footer {
         text-align: center;
         padding: 1rem 0;
         background: #556b2f;
         color: #fff;
+      }
+      @media (max-width: 768px) {
+        nav {
+          flex-direction: column;
+          align-items: center;
+        }
+        nav a {
+          padding: 0.5rem 1rem;
+          font-size: 0.9rem;
+        }
+        .intro-text,
+        .transport-text,
+        .environment-text {
+          margin-right: 0;
+        }
+        .titles {
+          flex-direction: column;
+          gap: 5px;
+        }
+        .title-item {
+          flex: 1 1 100%;
+        }
       }
     </style>
   </head>
@@ -226,14 +245,59 @@
               <p>
                 茶店子位于长江以南，巴东县城南部，东临归平河与秭归县隔河相望，西接龙头河与重庆市巫山县交界，南与绿葱坡毗邻，北与信陵接壤。毗邻国家4A级景区巴人河，属于巴东县域旅游重镇。
               </p>
+              <div class="intro-video">
+                <iframe
+                  src="https://v.douyin.com/ij8os98k/"
+                  width="100%"
+                  height="400"
+                  frameborder="0"
+                  allowfullscreen
+                ></iframe>
+              </div>
               <div class="titles">
-                <div class="title-item">中国天然氧吧</div>
-                <div class="title-item">中国三大硒都</div>
-                <div class="title-item">茶叶重要生产基地</div>
-                <div class="title-item">长寿之乡</div>
-                <div class="title-item">中国最美乡村</div>
-                <div class="title-item">美丽乡村示范村</div>
-                <div class="title-item">最适合人类居住的海拔高度</div>
+                <div class="title-item">
+                  中国天然氧吧
+                  <div class="popup">
+                    恩施是“鄂西林海”，巴东拥有国家气象局授予的“中国天然氧吧”、“长江绿肺”的美誉，空气质量优良率达到94.5%，茶店子的森林覆盖率高度80%，负
+                    氧离子浓度稳定在每立方厘米5500个左右。这里阳光中80%被誉为生命之光的远红外线，对改善人体微循环对心脑血管非常有益。
+                  </div>
+                </div>
+                <div class="title-item">
+                  中国三大硒都
+                  <div class="popup">
+                    恩施是世界硒都，茶店子地处富硒矿带，经检测项目所在地每公斤土壤中硒含量0.42毫克，远超0.3毫克／公斤富硒标准，硒元素对健康的好处是世界公认的：抗氧化、提高免疫力、保护心血管、保护肝脏、预防癌症，人体只能通过含硒食品间接吸收硒元素。茶店子的饮用水源来自绿葱坡森林深处的溪流，是富硒含锶无污染的天然矿泉水，经检测TDS值17-22之间，比大自然的搬运工还要洁净。匹配洁净水源的是茶店子建有国家级示范水厂，饮水工程造福了茶店子的人民，更让旅居于此的朋友们，每天都能饮用天然矿泉水。
+                  </div>
+                </div>
+                <div class="title-item">
+                  茶叶重要生产基地
+                  <div class="popup">
+                    湖北巴东茶店子是中华始祖神农氏发现茶叶的地方，茶店子的风吹垭因其独特的地理环境和气候条件，出产的优质茶叶被誉为贡茶。茶店子因巴东郡贡茶而得名“茶”，因贩运茶叶的驿站而得名“店子”。
+                  </div>
+                </div>
+                <div class="title-item">
+                  长寿之乡
+                  <div class="popup">
+                    云麓小镇周边农田里的有机蔬菜、高山玉米、马尔科小土豆都是硒含量较高的食材。正所谓一方水土养一方人，让茶店子成为著名的长寿之乡，百岁老人就有七个，他们生活简单，粗茶淡饭，仍旧耳聪目明身体矫健，这是水土养人的真实佐证。
+                  </div>
+                </div>
+                <div class="title-item">
+                  中国最美乡村
+                  <div class="popup">
+                    在康养小镇周边有七处5A、4A级景区：有世界纤夫活化石的神农溪、长江第一拐印在人民币上风光的巫峡口、被誉为长江三峡香格里拉的巴人河、华中地区最大滑雪场绿葱坡、原始高山风貌的森林花海、人类起源地的地心谷、巴东门户三峡之心的无源洞......站在云麓小镇的露台上，深刻理解“仙居恩施秘境巴东”的含义，众山之巅、视野无边、天设地造、风景无敌。
+                  </div>
+                </div>
+                <div class="title-item">
+                  美丽乡村示范村
+                  <div class="popup">
+                    茶店子拥有国家级示范美丽乡村称号，以其自然资源、文化底蕴和人文关怀而闻名，成为全国美丽乡村建设的标杆。
+                  </div>
+                </div>
+                <div class="title-item">
+                  最适合人类居住的海拔高度
+                  <div class="popup">
+                    联合国教科文组织公认的最适宜人类康养的海拔高度是800米至1200米之间，而云麓小镇所在地的海拔为1050米，不高不低的海拔让这里的夏季平均气温只有22度，北边的巫山山脉和南边的武陵山脉在这里交汇，形成了茶店子高原山区和独特的卡斯特地貌，高山深谷的晨昼或雨后，时常云腾雾绕，但这里的岩层竖向生长，地表水通过垂直向下的裂隙渗入地下，自然形成的排水系统大大减少了湿气的积聚。
+                  </div>
+                </div>
               </div>
             </div>
             <img
@@ -283,7 +347,6 @@
               alt="星级医疗"
               class="environment-image"
             />
-
             <h3>业主独享八大中心</h3>
             <p>
               ◎
@@ -323,7 +386,7 @@
             />
             <p>
               ◎
-              田园养生中心——田野养生，采菊东篱下，世外桃源地。依托高山盆地自然地貌，打造具备“桃花源”神韵的田园养生中心。开发生态农业观光、生态采摘、自耕农场、野炊基地、田园民宿、农耕文化实景博物馆等农村生活业态，勤筋骨、识五谷、感乡愁。
+              田园养生中心——田野养生，采菊东篱下，世外桃源地。依托高山盆地自然地貌，打造具备“桃花源”神韵的田园养生中心。开发生态农业观光、生态配送等系列。
             </p>
             <img
               src="images/田园养生中心.png"
@@ -357,14 +420,12 @@
               alt="研学教育中心"
               class="environment-image"
             />
-
             <h3>项目总规模</h3>
             <img
               src="images/项目总规模.png"
               alt="项目总规模"
               class="environment-image"
             />
-
             <h3>山中健康优质资产</h3>
             <p>
               户户谷上云端入帘，领略人生豁达境界。
@@ -375,13 +436,11 @@
               投资健康成为趋势，茶店云麓小镇产业大有可为。
               品牌实力后盾，为资产护航。 硒养大时代，品质为王，早买早享受。
             </p>
-
             <h3>热销户型</h3>
             <img src="images/户型.png" alt="户型图" class="environment-image" />
           </div>
         </div>
       </div>
-
       <div id="scenic" class="content">
         <h2>景区介绍</h2>
         <div class="scenic-section">
@@ -415,7 +474,7 @@
             <h3>森林花海：</h3>
             <p>原始高山林海花海风貌</p>
             <p>和喀斯特地貌</p>
-            <p>一小时车程均可 到达。</p>
+            <p>一小时车程均可到达。</p>
             <img
               src="images/森林花海.png"
               alt="森林花海"
@@ -435,5 +494,21 @@
     <footer>
       <p>&copy; 2024 茶店云麓康养小镇 版权所有</p>
     </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var titleItems = document.querySelectorAll(".title-item");
+
+        titleItems.forEach(function (item) {
+          item.addEventListener("click", function () {
+            var popup = this.querySelector(".popup");
+            if (popup.style.display === "none" || popup.style.display === "") {
+              popup.style.display = "block";
+            } else {
+              popup.style.display = "none";
+            }
+          });
+        });
+      });
+    </script>
   </body>
 </html>
